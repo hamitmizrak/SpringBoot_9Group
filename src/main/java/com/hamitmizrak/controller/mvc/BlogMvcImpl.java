@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.List;
 
 @Controller
@@ -77,7 +77,24 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
         blogDto.setId(id);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");
+        if(blogDto.getId()==0){
+            model.addAttribute("key4","Bad Request");
+        }else if(blogDto.getId()==null){
+            model.addAttribute("key4","NotFound Exception");
+        }else{
+            model.addAttribute("key4",blogDto);
+        }
+        return "page4";
+    }
 
+
+    // http://localhost:4444/getData5?id=5
+    @GetMapping("/getData5")
+    public String getThymeleaf5(@RequestParam(name="id",required = false,defaultValue ="1" ) Long id, Model model){
+        BlogDto blogDto=new BlogDto();
+        blogDto.setId(id);
+        blogDto.setHeader("Header");
+        blogDto.setContent("Content");
         if(blogDto.getId()==0){
             model.addAttribute("key4","Bad Request");
         }else if(blogDto.getId()==null){
