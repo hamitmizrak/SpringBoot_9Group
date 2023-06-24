@@ -1,0 +1,29 @@
+Araştırma Ödevleri
+--------------------------------------
+Maven nedir ? ne için kullanılır ?
+Gradle nedir ? ne için kullanılır ?
+Maven ile gradle arasındaki farklar ?
+Jar nedir ?
+War nedir ?
+
+URL nedir ?
+URI nedir ?
+Relative Path nedir ?
+Absolute Path nedir ?
+Relative ile absolute path arasıdaki fark nedir ?
+
+Design pattern nedir ?
+Singleton Design pattern nedir ? Java ile örnek gösteriniz ?
+Builder Design pattern nedir ? Java ile örnek gösteriniz ?
+pom.xml  nedir ?
+
+Http nedir ?
+GetMapping
+PostMapping
+DeleteMapping
+PutMapping
+
+Çalışma Linkleri
+--------------------------------------
+Java CORE : https://www.w3schools.com/java/
+Java      : https://www.hackerrank.com/domains/java
