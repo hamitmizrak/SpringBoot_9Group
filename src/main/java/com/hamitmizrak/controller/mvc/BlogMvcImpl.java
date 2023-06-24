@@ -41,21 +41,21 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
         return "Sayfasız data";
     }
 
-    // http://localhost:2222/getdata1
-    @GetMapping("/getdata1")
+    // http://localhost:2222/getData1
+    @GetMapping("/getData1")
     public String getThymeleaf1(){
         return "page1";
     }
 
-    // http://localhost:2222/getdata2
-    @GetMapping("/getdata2")
+    // http://localhost:2222/getData2
+    @GetMapping("/getData2")
     public String getThymeleaf2(Model model){
         model.addAttribute("key2","String data");
         return "page2";
     }
 
-    // http://localhost:2222/getdata2
-    @GetMapping("/getdata3")
+    // http://localhost:2222/getData3
+    @GetMapping("/getData3")
     public String getThymeleaf3(Model model){
         BlogDto blogDto=new BlogDto();
         blogDto.setId(1L);
