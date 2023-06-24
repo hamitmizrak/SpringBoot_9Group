@@ -1,4 +1,10 @@
+# special data
+log
+memory_persist
+blog/node_modules
 HELP.md
+
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
