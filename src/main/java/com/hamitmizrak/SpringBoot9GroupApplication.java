@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.TimeZone;
 
-
 // Spring Security
 @SpringBootApplication(exclude = {
 		//SecurityAutoConfiguration.class,
@@ -37,8 +36,6 @@ public class SpringBoot9GroupApplication {
 
 		//Disables headless JOptionPane
 		System.setProperty("java.awt.headless", "false");
-
 		SpringApplication.run(SpringBoot9GroupApplication.class, args);
 	}
-
 }

@@ -18,7 +18,6 @@
 	<name>SpringBoot9Group</name>
 	<description>for Spring Boot , project</description>
 
-
 	<!--properties-->
 	<properties>
 		<encoding>UTF-8</encoding>
@@ -213,5 +212,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
