@@ -1,5 +1,7 @@
 package com.hamitmizrak.main;
 
+import com.hamitmizrak.bean.ModelMapperBean;
+import com.hamitmizrak.business.dto.CategoryDto;
 import com.hamitmizrak.data.entity.BlogEntity;
 import com.hamitmizrak.data.entity.CategoryEntity;
 import com.hamitmizrak.data.repository.IBlogRepository;
@@ -10,15 +12,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.*;
+
 // LOMBOK
 @RequiredArgsConstructor
 
 @Configuration
 public class ManyToOneCommandLineRunner {
 
+    // INJECTION
     //@Autowired
     private final IBlogRepository iBlogRepository;
     private final ICategoryRepository iCategoryRepository;
+    private final ModelMapperBean modelMapperBean;
 
 
     // Bean
@@ -34,12 +40,16 @@ public class ManyToOneCommandLineRunner {
 
         // Category(N) Blog(1)
         CategoryEntity category1=new CategoryEntity();
-        category1.setCategoryName("bilişim");
+        String user= JOptionPane.showInputDialog("Lütfen category adını yazınız");
+        user=user.toUpperCase();
+        category1.setCategoryName(user);
         category1.setBlogEntity(blog);
         iCategoryRepository.save(category1);
 
         CategoryEntity category2=new CategoryEntity();
-        category2.setCategoryName("java");
+        String user2= JOptionPane.showInputDialog("Lütfen category adını yazınız");
+        user2=user2.toUpperCase();
+        category2.setCategoryName(user2);
         category2.setBlogEntity(blog);
         iCategoryRepository.save(category2);
     }
