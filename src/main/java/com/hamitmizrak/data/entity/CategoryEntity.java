@@ -1,18 +1,13 @@
 package com.hamitmizrak.data.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.util.Date;
 
 // LOMBOK
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 
 // Entity
@@ -37,4 +32,17 @@ public class CategoryEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "blog_id", nullable = false)
     BlogEntity blogEntity;
+
+    //Parametresiz Constructor
+    public CategoryEntity() {
+    }
+
+    //Parametreli Constructor
+    public CategoryEntity(String categoryName, Date createdDate) {
+        this.categoryName = categoryName;
+        this.createdDate = createdDate;
+    }
+
+    // Spring Data (1-N) Sorgulama (inner join)
+    // 1 nolu blogDto bütün kategorilerini sorgulatalım ?
 }
