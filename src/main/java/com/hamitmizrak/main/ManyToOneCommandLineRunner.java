@@ -11,7 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.swing.*;
 
 // LOMBOK
@@ -26,32 +25,51 @@ public class ManyToOneCommandLineRunner {
     private final ICategoryRepository iCategoryRepository;
     private final ModelMapperBean modelMapperBean;
 
+    // Category Save
+    @Transactional  // save,delete,create
+    public CategoryEntity categorySave(String categoryName){
+        CategoryEntity categoryEntity=new CategoryEntity();
+        categoryEntity.setCategoryName(categoryName);
+        iCategoryRepository.save(categoryEntity);
+        return categoryEntity;
+    }
+
+    // Kullanıcıdan alınan kategoriyi eklesin
+    public void userData(){
+        for (int i = 1; i <=4; i++) {
+            String user= JOptionPane.showInputDialog("Lütfen category"+ i+". adını yazınız");
+            user=user.toUpperCase();
+            categorySave(user);
+        }
+    }
+
+    // CATEGORY LIST
+    public Iterable<CategoryEntity> categoryDtoList(){
+        return iCategoryRepository.findAll();
+    }
 
     // Bean
     @Bean
     @Transactional // save,delete,create
     public void manyToOneStatement(){
         // Tekilde Başla
-        // Blog(1) Category(N)
-        BlogEntity blog=new BlogEntity();
-        blog.setHeader("header-1");
-        blog.setContent("content-1");
-        iBlogRepository.save(blog);
+        // Category(1) Blog(N)
+         userData();
+         Iterable<CategoryEntity> dtoList=categoryDtoList();
 
-        // Category(N) Blog(1)
-        CategoryEntity category1=new CategoryEntity();
-        String user= JOptionPane.showInputDialog("Lütfen category adını yazınız");
-        user=user.toUpperCase();
-        category1.setCategoryName(user);
-        category1.setBlogEntity(blog);
-        iCategoryRepository.save(category1);
+        // Blog(N)  Category(1)
+        BlogEntity blog1=new BlogEntity();
+        blog1.setHeader("header-1");
+        blog1.setContent("content-1");
+        blog1.setCategoryEntity(dtoList.get(0),CategoryEntity.class);
+        iBlogRepository.save(blog1);
 
-        CategoryEntity category2=new CategoryEntity();
-        String user2= JOptionPane.showInputDialog("Lütfen category adını yazınız");
-        user2=user2.toUpperCase();
-        category2.setCategoryName(user2);
-        category2.setBlogEntity(blog);
-        iCategoryRepository.save(category2);
+        // Blog(N)  Category(1)
+        BlogEntity blog2=new BlogEntity();
+        blog2.setHeader("header-1");
+        blog2.setContent("content-1");
+        blog2.setCategoryEntity(dtoList.get(1),CategoryEntity.class);
+        iBlogRepository.save(blog2);
     }
 
     // CommandLineRunner

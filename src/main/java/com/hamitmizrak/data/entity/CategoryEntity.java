@@ -1,10 +1,10 @@
 package com.hamitmizrak.data.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
+import java.util.List;
 
 // LOMBOK
 @Data
@@ -12,7 +12,7 @@ import java.util.Date;
 // Entity
 @Entity
 @Table(name = "category")
-// Category(N) Blog(1)
+// Category(1) Blog(N)
 public class CategoryEntity {
 
     @Id
@@ -28,9 +28,10 @@ public class CategoryEntity {
     private Date createdDate;
 
     // Relation
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "blog_id", nullable = false)
-    BlogEntity blogEntity;
+    @OneToMany(mappedBy ="categoryEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    List<BlogEntity> blogEntityList;
+
+
 
     //Parametresiz Constructor
     public CategoryEntity() {
