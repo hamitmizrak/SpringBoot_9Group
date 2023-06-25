@@ -1,7 +1,6 @@
 package com.hamitmizrak.main;
 
 import com.hamitmizrak.bean.ModelMapperBean;
-import com.hamitmizrak.business.dto.CategoryDto;
 import com.hamitmizrak.data.entity.BlogEntity;
 import com.hamitmizrak.data.entity.CategoryEntity;
 import com.hamitmizrak.data.repository.IBlogRepository;
@@ -12,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 // LOMBOK
 @RequiredArgsConstructor
@@ -55,20 +56,24 @@ public class ManyToOneCommandLineRunner {
         // Tekilde Başla
         // Category(1) Blog(N)
          userData();
-         Iterable<CategoryEntity> dtoList=categoryDtoList();
+         Iterable<CategoryEntity> iterable=categoryDtoList();
+        List<CategoryEntity> categoryEntityList=new ArrayList<>();
+        iterable.forEach(categoryEntityList::add);
+        System.out.println("cast");
+        categoryEntityList.forEach(System.out::println);
 
         // Blog(N)  Category(1)
         BlogEntity blog1=new BlogEntity();
         blog1.setHeader("header-1");
         blog1.setContent("content-1");
-        blog1.setCategoryEntity(dtoList.get(0),CategoryEntity.class);
+        blog1.setCategoryEntity(categoryEntityList.get(0));
         iBlogRepository.save(blog1);
 
         // Blog(N)  Category(1)
         BlogEntity blog2=new BlogEntity();
         blog2.setHeader("header-1");
         blog2.setContent("content-1");
-        blog2.setCategoryEntity(dtoList.get(1),CategoryEntity.class);
+        blog2.setCategoryEntity(categoryEntityList.get(1));
         iBlogRepository.save(blog2);
     }
 

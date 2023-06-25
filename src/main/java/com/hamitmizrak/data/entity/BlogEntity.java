@@ -3,10 +3,8 @@ package com.hamitmizrak.data.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 // LOMBOK
 @Data
@@ -25,7 +23,6 @@ public class BlogEntity implements Serializable {
 
     @Column(length =200)
     private String header;
-
     private String content;
 
     @CreationTimestamp
@@ -33,18 +30,10 @@ public class BlogEntity implements Serializable {
     private Date createdDate;
 
     // Relation
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     CategoryEntity categoryEntity;
 
     //parametresiz constructor
-    public BlogEntity() {
-    }
-
-    //parametreli constructor
-    public BlogEntity(String header, String content) {
-        this.header = header;
-        this.content = content;
-    }
+    public BlogEntity() {}
 }

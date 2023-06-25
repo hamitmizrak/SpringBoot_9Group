@@ -5,7 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
 import java.util.List;
-
 // LOMBOK
 @Data
 
@@ -31,18 +30,6 @@ public class CategoryEntity {
     @OneToMany(mappedBy ="categoryEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     List<BlogEntity> blogEntityList;
 
-
-
     //Parametresiz Constructor
-    public CategoryEntity() {
-    }
-
-    //Parametreli Constructor
-    public CategoryEntity(String categoryName, Date createdDate) {
-        this.categoryName = categoryName;
-        this.createdDate = createdDate;
-    }
-
-    // Spring Data (1-N) Sorgulama (inner join)
-    // 1 nolu blogDto bütün kategorilerini sorgulatalım ?
+    public CategoryEntity() {}
 }
