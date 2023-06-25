@@ -8,7 +8,6 @@ import java.util.Date;
 
 // LOMBOK
 @Data
-@Builder
 
 // Entity
 @Entity

@@ -13,7 +13,6 @@ import java.util.List;
 
 // LOMBOK
 @Data
-@Builder
 
 // Entity
 @Entity
