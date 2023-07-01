@@ -61,8 +61,6 @@ public class ManyToOneCommandLineRunner {
         Iterable<CategoryEntity> iterable = categoryDtoList();       // Iterable List
         List<CategoryEntity> categoryEntityList = new ArrayList<>(); // Normal List
         iterable.forEach(categoryEntityList::add);// Iterable List'i List Interface çeviriyor.
-        System.out.println("cast");
-        categoryEntityList.forEach(System.out::println); // Iterable çevrilmiş List görüyoruz.
 
         // Blog(N)  Category(1)
         BlogEntity blog1 = new BlogEntity();
@@ -73,12 +71,14 @@ public class ManyToOneCommandLineRunner {
         iBlogRepository.save(blog1);
 
         // Blog(N)  Category(1)
-        BlogEntity blog2 = new BlogEntity();
-        blog2.setHeader("header-1");
-        blog2.setContent("content-1");
-        if(categoryEntityList!=null)
-        blog2.setCategoryEntity(categoryEntityList.get(1));
+        //String header, String content, CategoryEntity categoryEntity)
+        BlogEntity blog2 = new BlogEntity("header-1","content-1",categoryEntityList.get(1));
         iBlogRepository.save(blog2);
+
+        // Göster (1) Category
+        categoryEntityList.forEach(System.out::println); // Iterable çevrilmiş List görüyoruz.
+        System.out.println(blog1);
+        System.out.println(blog2);
     }
 
     // CommandLineRunner
