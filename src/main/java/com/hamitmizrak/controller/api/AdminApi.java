@@ -79,4 +79,16 @@ public class AdminApi {
         return adminDto;
     }
 
+
+    // http://localhost:2222/admin/api/v1/object6
+    // http://localhost:2222/admin/api/v1/object6?id=1
+    @GetMapping("object6")
+    public AdminDto getRest6(@RequestParam(name = "id",required = false,defaultValue = "44") Long id){
+        AdminDto adminDto=AdminDto.builder()
+                .adminId(id)
+                .adminName("name")
+                .adminSurname("surname")
+                .build();
+        return adminDto;
+    }
 }
