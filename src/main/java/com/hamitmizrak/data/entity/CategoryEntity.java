@@ -32,4 +32,6 @@ public class CategoryEntity {
 
     //Parametresiz Constructor
     public CategoryEntity() {}
+
+    // Not: One olan obje için parametreli constructora eklemeyelim.
 }

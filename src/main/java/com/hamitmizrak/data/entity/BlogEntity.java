@@ -36,4 +36,10 @@ public class BlogEntity implements Serializable {
 
     //parametresiz constructor
     public BlogEntity() {}
+    //parametreli constructor (Composition)
+    public BlogEntity(String header, String content, CategoryEntity categoryEntity) {
+        this.header = header;
+        this.content = content;
+        this.categoryEntity = categoryEntity;
+    }
 }
