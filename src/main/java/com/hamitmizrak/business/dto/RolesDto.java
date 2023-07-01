@@ -13,10 +13,10 @@ import java.util.Date;
 @AllArgsConstructor
 @Log4j2
 @Builder
-public class CategoryDto  implements Serializable {
+public class RolesDto  implements Serializable {
     public static final Long serialVersionUID=1L;
 
-    private Long categoryId;
-    private String categoryName;
+    private Long rolesId;
+    private String rolesName;
     private Date createdDate;
 }

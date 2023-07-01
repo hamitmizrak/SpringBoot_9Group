@@ -1,9 +1,9 @@
 package com.hamitmizrak.main;
 
 import com.hamitmizrak.bean.ModelMapperBean;
-import com.hamitmizrak.data.entity.BlogEntity;
+import com.hamitmizrak.data.entity.BlogsEntity;
 import com.hamitmizrak.data.entity.CategoryEntity;
-import com.hamitmizrak.data.repository.IBlogRepository;
+import com.hamitmizrak.data.repository.IBlogsRepository;
 import com.hamitmizrak.data.repository.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -20,11 +20,11 @@ import java.util.List;
 
 // Bean
 @Configuration
-public class ManyToOneCommandLineRunner {
+public class ManyToOneCategoryBlogsCommandLineRunner {
 
     // INJECTION
     //@Autowired
-    private final IBlogRepository iBlogRepository;
+    private final IBlogsRepository iBlogRepository;
     private final ICategoryRepository iCategoryRepository;
     private final ModelMapperBean modelMapperBean;
 
@@ -63,16 +63,16 @@ public class ManyToOneCommandLineRunner {
         iterable.forEach(categoryEntityList::add);// Iterable List'i List Interface çeviriyor.
 
         // Blog(N)  Category(1)
-        BlogEntity blog1 = new BlogEntity();
+        BlogsEntity blog1 = new BlogsEntity();
         blog1.setHeader("header-1");
         blog1.setContent("content-1");
         if(categoryEntityList!=null)
-        blog1.setCategoryEntity(categoryEntityList.get(0));
+        blog1.setRelationCategoryEntity(categoryEntityList.get(0));
         iBlogRepository.save(blog1);
 
         // Blog(N)  Category(1)
         //String header, String content, CategoryEntity categoryEntity)
-        BlogEntity blog2 = new BlogEntity("header-1","content-1",categoryEntityList.get(1));
+        BlogsEntity blog2 = new BlogsEntity("header-1","content-1",categoryEntityList.get(1));
         iBlogRepository.save(blog2);
 
         // Göster (1) Category

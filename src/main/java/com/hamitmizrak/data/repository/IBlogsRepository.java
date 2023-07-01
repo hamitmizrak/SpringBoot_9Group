@@ -1,14 +1,14 @@
 package com.hamitmizrak.data.repository;
 
-import com.hamitmizrak.data.entity.BlogEntity;
+import com.hamitmizrak.data.entity.BlogsEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 // http://localhost:2222/h2-console
 @Repository
-public interface IBlogRepository extends CrudRepository<BlogEntity,Long> {
+public interface IBlogsRepository extends CrudRepository<BlogsEntity,Long> {
 
     // Delivered Query
-    BlogEntity findBlogEntityByHeader(String header);
+    BlogsEntity findBlogEntityByHeader(String header);
     // @Query
 }

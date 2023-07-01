@@ -1,6 +1,6 @@
 package com.hamitmizrak.controller.mvc;
 
-import com.hamitmizrak.business.dto.BlogDto;
+import com.hamitmizrak.business.dto.BlogsDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
+public  class BlogMvcImpl implements IBlogMvc<BlogsDto> {
 
     // CREATE
     @Override
-    public BlogDto create(BlogDto blogDto) {
+    public BlogsDto create(BlogsDto blogDto) {
         return null;
     }
 
     // DELETE
     @Override
-    public BlogDto delete(BlogDto blogDto) {
+    public BlogsDto delete(BlogsDto blogDto) {
         return null;
     }
 
     // UPDATE
     @Override
-    public BlogDto update(Long id, BlogDto blogDto) {
+    public BlogsDto update(Long id, BlogsDto blogDto) {
         return null;
     }
 
     //LIST
     @Override
-    public List<BlogDto> list() {
+    public List<BlogsDto> list() {
         return null;
     }
 
@@ -60,7 +60,7 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
     // http://localhost:4444/getData3
     @GetMapping("/getData3")
     public String getThymeleaf3(Model model){
-        BlogDto blogDto=new BlogDto();
+        BlogsDto blogDto=new BlogsDto();
         blogDto.setBlogId(1L);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");
@@ -73,7 +73,7 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
     // http://localhost:4444/getData4/1
     @GetMapping({"/getData4","/getData4/{id}"})
     public String getThymeleaf4(@PathVariable(name="id",required = false) Long id, Model model){
-        BlogDto blogDto=new BlogDto();
+        BlogsDto blogDto=new BlogsDto();
         blogDto.setBlogId(id);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");
@@ -91,7 +91,7 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
     // http://localhost:4444/getData5?id=5
     @GetMapping("/getData5")
     public String getThymeleaf5(@RequestParam(name="id",required = false,defaultValue ="1" ) Long id, Model model){
-        BlogDto blogDto=new BlogDto();
+        BlogsDto blogDto=new BlogsDto();
         blogDto.setBlogId(id);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");

@@ -3,6 +3,8 @@ package com.hamitmizrak.data.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 // LOMBOK
@@ -12,7 +14,8 @@ import java.util.List;
 @Entity
 @Table(name = "category")
 // Category(1) Blog(N)
-public class CategoryEntity {
+public class CategoryEntity implements Serializable {
+    public static final Long serialVersionUID=1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +30,14 @@ public class CategoryEntity {
     private Date createdDate;
 
     // Relation
-    @OneToMany(mappedBy ="categoryEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    List<BlogEntity> blogEntityList;
+    @OneToMany(mappedBy ="relationCategoryEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    List<BlogsEntity> relationBlogEntityList;
 
     //Parametresiz Constructor
     public CategoryEntity() {}
 
     // Not: One olan obje için parametreli constructora eklemeyelim.
+    public CategoryEntity(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }

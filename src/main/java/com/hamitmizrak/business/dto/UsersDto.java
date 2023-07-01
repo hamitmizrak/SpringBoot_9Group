@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,16 +13,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Log4j2
 @Builder
-public class BlogDto implements Serializable {
+public class UsersDto  implements Serializable {
     public static final Long serialVersionUID=1L;
 
-    private Long blogId;
-    private String header;
-    private String content;
+    private Long userId;
+    private String userName;
+    private String userEmail;
+    private String userPassword;
     private Date createdDate;
-
-    // Parametresiz constructor
-    public BlogDto() {
-        createdDate=new Date(System.currentTimeMillis());
-    }
 }

@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "blog")
 // Blog(1) Category(N)
-public class BlogEntity implements Serializable {
+public class BlogsEntity implements Serializable {
     public static final Long serialVersionUID=1L;
 
     @Id
@@ -32,14 +32,14 @@ public class BlogEntity implements Serializable {
     // Relation
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
-    CategoryEntity categoryEntity;
+    CategoryEntity relationCategoryEntity;
 
     //parametresiz constructor
-    public BlogEntity() {}
+    public BlogsEntity() {}
     //parametreli constructor (Composition)
-    public BlogEntity(String header, String content, CategoryEntity categoryEntity) {
+    public BlogsEntity(String header, String content, CategoryEntity relationCategoryEntity) {
         this.header = header;
         this.content = content;
-        this.categoryEntity = categoryEntity;
+        this.relationCategoryEntity = relationCategoryEntity;
     }
 }
