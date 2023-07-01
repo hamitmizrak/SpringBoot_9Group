@@ -77,6 +77,7 @@ public class ManyToOneCommandLineRunner {
 
         // Göster (1) Category
         categoryEntityList.forEach(System.out::println); // Iterable çevrilmiş List görüyoruz.
+        // Göster (N) Blog
         System.out.println(blog1);
         System.out.println(blog2);
     }

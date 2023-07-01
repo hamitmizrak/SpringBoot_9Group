@@ -61,7 +61,7 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
     @GetMapping("/getData3")
     public String getThymeleaf3(Model model){
         BlogDto blogDto=new BlogDto();
-        blogDto.setId(1L);
+        blogDto.setBlogId(1L);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");
         model.addAttribute("key3",blogDto);
@@ -74,12 +74,12 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
     @GetMapping({"/getData4","/getData4/{id}"})
     public String getThymeleaf4(@PathVariable(name="id",required = false) Long id, Model model){
         BlogDto blogDto=new BlogDto();
-        blogDto.setId(id);
+        blogDto.setBlogId(id);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");
-        if(blogDto.getId()==0){
+        if(blogDto.getBlogId()==0){
             model.addAttribute("key4","Bad Request");
-        }else if(blogDto.getId()==null){
+        }else if(blogDto.getBlogId()==null){
             model.addAttribute("key4","NotFound Exception");
         }else{
             model.addAttribute("key4",blogDto);
@@ -92,12 +92,12 @@ public  class BlogMvcImpl implements IBlogMvc<BlogDto> {
     @GetMapping("/getData5")
     public String getThymeleaf5(@RequestParam(name="id",required = false,defaultValue ="1" ) Long id, Model model){
         BlogDto blogDto=new BlogDto();
-        blogDto.setId(id);
+        blogDto.setBlogId(id);
         blogDto.setHeader("Header");
         blogDto.setContent("Content");
-        if(blogDto.getId()==0){
+        if(blogDto.getBlogId()==0){
             model.addAttribute("key4","Bad Request");
-        }else if(blogDto.getId()==null){
+        }else if(blogDto.getBlogId()==null){
             model.addAttribute("key4","NotFound Exception");
         }else{
             model.addAttribute("key4",blogDto);

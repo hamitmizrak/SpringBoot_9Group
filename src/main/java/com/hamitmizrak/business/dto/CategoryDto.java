@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class CategoryDto {
 
-    private Long id;
+    private Long categoryId;
     private String categoryName;
     private Date createdDate;
 }

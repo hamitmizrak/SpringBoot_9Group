@@ -19,7 +19,7 @@ public class BlogEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "blog_id",unique = true,nullable = false)
-    private Long id;
+    private Long blogId;
 
     @Column(length =200)
     private String header;

@@ -15,7 +15,7 @@ import java.util.Date;
 public class BlogDto implements Serializable {
     public static final Long serialVersionUID=1L;
 
-    private Long id;
+    private Long blogId;
     private String header;
     private String content;
     private Date createdDate;
