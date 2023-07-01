@@ -3,7 +3,6 @@ package com.hamitmizrak.data.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;

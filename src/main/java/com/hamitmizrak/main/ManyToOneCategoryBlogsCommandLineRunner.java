@@ -52,7 +52,7 @@ public class ManyToOneCategoryBlogsCommandLineRunner {
     }
 
     // Bean
-    @Bean
+/**    @Bean
     @Transactional // save,delete,create
     public void manyToOneStatement() {
         // Tekilde Başla
@@ -80,12 +80,12 @@ public class ManyToOneCategoryBlogsCommandLineRunner {
         // Göster (N) Blog
         System.out.println(blog1);
         System.out.println(blog2);
-    }
+    }*/
 
     // CommandLineRunner
     public CommandLineRunner manyToOneResult() {
         return (args) -> {
-            manyToOneStatement();
+            //manyToOneStatement();
         }; //end return
     }  //end CommandLineRunner
 }//enc class
