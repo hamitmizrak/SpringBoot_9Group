@@ -42,4 +42,4 @@ public class BlogsEntity implements Serializable {
         this.content = content;
         this.relationCategoryEntity = relationCategoryEntity;
     }
-}
+}// end class
