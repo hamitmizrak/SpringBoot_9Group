@@ -2,6 +2,8 @@ package com.hamitmizrak.controller.api;
 
 import com.hamitmizrak.business.dto.AdminDto;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -105,5 +107,39 @@ public class AdminApi {
                 .adminSurname("surname")
                 .build();
         return adminDto;
+    }
+
+    // http://localhost:2222/admin/api/v1/object8
+    @GetMapping("object8")
+    public ResponseEntity<AdminDto> getRest8(){
+        AdminDto adminDto=AdminDto.builder()
+                .adminId(0L)
+                .adminName("name")
+                .adminSurname("surname")
+                .build();
+        //return ResponseEntity.status(200).body(adminDto);
+        //return ResponseEntity.status(HttpStatus.OK).body(adminDto);
+       return ResponseEntity.ok(adminDto);
+    }
+
+
+    // http://localhost:2222/admin/api/v1/object9
+    // http://localhost:2222/admin/api/v1/object9/0
+    // http://localhost:2222/admin/api/v1/object9/1
+    @GetMapping("object9/{id}")
+    public ResponseEntity<AdminDto> getRest9(@PathVariable Long id){
+        AdminDto adminDto=AdminDto.builder()
+                .adminId(id)
+                .adminName("name")
+                .adminSurname("surname")
+                .build();
+        if(id==null){
+            log.error("404 hatası");
+            return ResponseEntity.notFound().build();
+        }else if(id==0){
+            log.error("400 hatası");
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(adminDto);
     }
 }
