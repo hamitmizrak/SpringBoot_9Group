@@ -91,4 +91,19 @@ public class AdminApi {
                 .build();
         return adminDto;
     }
+
+
+    // http://localhost:2222/admin/api/v1/object7?id=1&name=deneme
+    @GetMapping("object7")
+    public AdminDto getRest7(
+            @RequestParam(name = "id") Long id,
+            @RequestParam(name = "name") String name
+    ){
+        AdminDto adminDto=AdminDto.builder()
+                .adminId(id)
+                .adminName(name)
+                .adminSurname("surname")
+                .build();
+        return adminDto;
+    }
 }
