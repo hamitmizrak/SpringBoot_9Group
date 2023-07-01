@@ -4,6 +4,9 @@ import com.hamitmizrak.business.dto.AdminDto;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/admin/api/v1")
@@ -46,6 +49,33 @@ public class AdminApi {
                     .adminSurname("surname")
                     .build();
         }
+        return adminDto;
+    }
+
+    // http://localhost:2222/admin/api/v1/object4
+    @GetMapping("object4")
+    public List<AdminDto>  getRest4(){
+        List<AdminDto> adminDtoList=new ArrayList<>();
+        for (int i = 1; i <=10 ; i++) {
+            AdminDto adminDto=AdminDto.builder()
+                    .adminId(Long.valueOf(i))
+                    .adminName("name"+i)
+                    .adminSurname("surname"+i)
+                    .build();
+            adminDtoList.add(adminDto);
+        }
+        return adminDtoList;
+    }
+
+
+    // http://localhost:2222/admin/api/v1/object5?id=1
+    @GetMapping("object5")
+    public AdminDto getRest5(@RequestParam Long id){
+        AdminDto adminDto=AdminDto.builder()
+                .adminId(id)
+                .adminName("name")
+                .adminSurname("surname")
+                .build();
         return adminDto;
     }
 
